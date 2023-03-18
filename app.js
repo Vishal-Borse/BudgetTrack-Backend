@@ -11,6 +11,7 @@ const User = require("./Models/userSchema");
 const Transaction = require("./Models/transactionsSchema");
 const PayRequest = require("./Models/payRequestsSchema");
 const { findByIdAndUpdate } = require("./Models/userSchema");
+const Port = process.env.PORT || 8081;
 const app = express();
 app.use(cookieParser());
 mongoose.set("strictQuery", true);
@@ -358,12 +359,6 @@ app.get("/dashboard/getpayrequests", Authenticate, async (req, res) => {
   res.send(result);
 });
 
-// app.post("/dashboard/isfriend", Authenticate, async (req, res) => {
-//   const {memberEmail} = req.body;
-//   try{
-//     const isFriend = await
-//   }
-// });
 
 app.get("/dashboard/getfriends", Authenticate, async (req, res) => {
   try {
