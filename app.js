@@ -17,7 +17,7 @@ app.use(cookieParser());
 mongoose.set("strictQuery", true);
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://vishal-budget-track.netlify.app",
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
