@@ -378,7 +378,14 @@ app.get("/dashboard", Authenticate, async (req, res) => {
 });
 
 app.get("/dashboard/logout", async (req, res) => {
-  res.clearCookie("jwtoken", { path: "/" });
+  res.clearCookie("jwtoken", {
+    path: "/",
+    httpOnly: true,
+
+    sameSite: process.env["NODE_ENV"] === "production" ? "none" : "lax", // must be 'none' to enable cross-site delivery
+    secure: process.env["NODE_ENV"] === "production",
+  }); // must be true if sameSite='none', });
+
   res.status(200).json({
     message: "user Logged out",
   });
