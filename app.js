@@ -108,6 +108,9 @@ app.post("/signin", async (req, res) => {
     res.cookie("jwtoken", token, {
       expires: new Date(Date.now() + 25892000000),
       httpOnly: true,
+
+      sameSite: process.env["NODE_ENV"] === "production" ? "none" : "lax", // must be 'none' to enable cross-site delivery
+      secure: process.env["NODE_ENV"] === "production", // must be true if sameSite='none',
     });
 
     res.status(201).json({
