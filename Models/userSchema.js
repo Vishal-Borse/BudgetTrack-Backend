@@ -20,6 +20,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+
     friends: [
       {
         type: String,
@@ -31,7 +32,7 @@ const userSchema = new mongoose.Schema(
     },
     expenses: {
       type: Number,
-      required: true
+      required: true,
     },
   },
   {

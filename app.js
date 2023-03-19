@@ -17,7 +17,7 @@ app.use(cookieParser());
 mongoose.set("strictQuery", true);
 app.use(
   cors({
-    origin: "https://vishal-budget-track.netlify.app",
+    origin: "http://localhost:3000",
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
@@ -76,6 +76,8 @@ app.post("/signup", async (req, res) => {
 // post API request for login
 app.post("/signin", async (req, res) => {
   const { userEmail, userPassword } = req.body;
+
+  console.log(req.body);
 
   let token;
   try {
