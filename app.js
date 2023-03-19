@@ -17,7 +17,7 @@ app.use(cookieParser());
 mongoose.set("strictQuery", true);
 app.use(
   cors({
-    origin: ["https://vishal-budget-track.netlify.app"],
+    origin: "https://vishal-budget-track.netlify.app",
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
@@ -358,7 +358,6 @@ app.get("/dashboard/getpayrequests", Authenticate, async (req, res) => {
   const result = await PayRequest.find({ userId: req.userid });
   res.send(result);
 });
-
 
 app.get("/dashboard/getfriends", Authenticate, async (req, res) => {
   try {
